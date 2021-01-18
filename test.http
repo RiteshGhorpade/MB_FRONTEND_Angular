@@ -24,3 +24,27 @@ content-type: application/json
     "email":"riteshghorpade1996@gmail.com",
     "password":"check"
 }
+
+###
+
+GET http://localhost:8080/subscriptionid HTTP/1.1
+
+
+###
+
+
+POST http://localhost:8080/saveSubscription HTTP/1.1
+content-type: application/json
+
+{
+    "razorpay_payment_id":"pay_GQOZgL0z8M0Qxd",
+    "razorpay_subscription_id":"sub_GQOYuP4HeXFDqt",
+    "razorpay_signature":"8043a327cf8081cc038da3605e78a4920608d08f45e3d51e5961f3ba52ea8371";
+}
+
+###
+
+GET http://localhost:8080/cancelsubscription/sub_GQPL6KmgJtsism  HTTP/1.1
+
+
+    
