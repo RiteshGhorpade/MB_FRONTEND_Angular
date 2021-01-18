@@ -32,7 +32,7 @@ export class SubscriptionComponent implements OnInit {
       }
     );
   }
-  payWithRazor(val) {
+  payWithRazor() {
     this._subscriptionService.getSubscriptionID().subscribe(
       data => {
         this.subscriptionID = data.id;
