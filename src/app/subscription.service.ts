@@ -23,4 +23,11 @@ export class SubscriptionService {
     return this._http.post<any>('http://localhost:8080/savesubscription', subObj);
   }
 
+  public getSubscriptionAndLoginInfo(): Observable<any> {
+    return this._http.get<any>('http://localhost:8080/subscriptioninfo');
+  }
+  public cancelSubscriptionID(): Observable<any> {
+    return this._http.get<any>('http://localhost:8080/cancelsubscription');
+  }
+
 }

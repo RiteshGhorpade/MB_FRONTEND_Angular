@@ -2,7 +2,7 @@ import { Subscription } from '../subscription';
 import { Component, OnInit } from '@angular/core';
 import { SubscriptionService } from '../subscription.service';
 import { WindowRefService } from '../window-ref.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-subscription',
   templateUrl: './subscription.component.html',
@@ -11,13 +11,25 @@ import { WindowRefService } from '../window-ref.service';
 })
 export class SubscriptionComponent implements OnInit {
 
-  subscriptionID = 'yes';
-  loggedin = true;
+  subscriptionID = '';
+  loggedIn = "false";
+  error = '';
 
 
-  constructor(private winRef: WindowRefService, private _subscriptionService: SubscriptionService) { }
+  constructor(private winRef: WindowRefService, private _subscriptionService: SubscriptionService, private _route: Router) { }
 
   ngOnInit() {
+    this._subscriptionService.getSubscriptionAndLoginInfo().subscribe(
+      data => {
+        console.log(data);
+        this.subscriptionID = data.subscriptionID;
+        this.loggedIn = data.loggedIn;
+      },
+      error => {
+        console.log('Error');
+        console.log(error.message);
+      }
+    );
   }
   payWithRazor(val) {
     this._subscriptionService.getSubscriptionID().subscribe(
@@ -36,6 +48,8 @@ export class SubscriptionComponent implements OnInit {
                 console.log(data);
               },
               error => {
+                this.subscriptionID = "";
+                this.error = "Transaction failed please try again";
                 console.log('Error');
                 console.log(error.message);
               },
@@ -55,10 +69,16 @@ export class SubscriptionComponent implements OnInit {
 
   }
   cancelWithRazor() {
-
+    this._subscriptionService.cancelSubscriptionID().subscribe(data => {
+      console.log('Cancel Sucess');
+      this.subscriptionID = '';
+    }, error => {
+      console.log('Error');
+      console.log(error.message);;
+    });
   }
   login() {
-
+    this._route.navigate(['/']);
   }
 }
 //"prefill": {
