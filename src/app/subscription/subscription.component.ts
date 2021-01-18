@@ -11,7 +11,8 @@ import { WindowRefService } from '../window-ref.service';
 })
 export class SubscriptionComponent implements OnInit {
 
-  subscriptionID = '';
+  subscriptionID = 'yes';
+  loggedin = true;
 
 
   constructor(private winRef: WindowRefService, private _subscriptionService: SubscriptionService) { }
@@ -51,6 +52,12 @@ export class SubscriptionComponent implements OnInit {
 
       },
     );
+
+  }
+  cancelWithRazor() {
+
+  }
+  login() {
 
   }
 }

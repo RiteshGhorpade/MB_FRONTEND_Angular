@@ -1,1 +1,29 @@
-<button id="rzp-button1" (click)="payWithRazor()">Pay</button>
+<section class="showcase">
+  <div class="overlay"></div>
+  <div class="text">
+    <h2>Services</h2>
+    <h3>Monthly Subscription</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
+      similique exercitationem dolorem dolorum ex illo iste rerum numquam sequi
+      molestiae.
+    </p>
+    <button
+      *ngIf="subscriptionID == '' && loggedin"
+      id="rzp-button1"
+      (click)="payWithRazor()"
+    >
+      Subscribe
+    </button>
+    <button
+      *ngIf="subscriptionID != '' && loggedin"
+      id="rzp-button2"
+      (click)="cancelWithRazor()"
+    >
+      Cancel Subscription
+    </button>
+    <button *ngIf="!loggedin" id="rzp-button3" (click)="login()">
+      Login to Subscribe
+    </button>
+  </div>
+</section>
