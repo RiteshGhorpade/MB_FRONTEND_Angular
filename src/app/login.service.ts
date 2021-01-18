@@ -11,9 +11,9 @@ export class LoginService {
   }
 
   public loginBackendCheck(manager: Manager): Observable<any> {
-    return this._http.post<any>('http://localhost:8080/LogIn', manager, { withCredentials: true });
+    return this._http.post<any>('http://localhost:8080/LogIn', manager);
   }
   public SignIn(manager: Manager): Observable<any> {
-    return this._http.post<any>('http://localhost:8080/SignIn', manager, { withCredentials: true });
+    return this._http.post<any>('http://localhost:8080/SignIn', manager);
   }
 }

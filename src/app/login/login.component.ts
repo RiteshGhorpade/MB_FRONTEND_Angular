@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
     console.log('response sent');
     this._service.loginBackendCheck(this.manager).subscribe(
       data => {
+        console.log(data)
+        sessionStorage.setItem('Id', data.Id);
         this._route.navigate(['/subscription']);
       },
       error => {

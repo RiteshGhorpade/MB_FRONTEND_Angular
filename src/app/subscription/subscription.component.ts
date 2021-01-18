@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 export class SubscriptionComponent implements OnInit {
 
   subscriptionID = '';
-  loggedIn = "false";
+  Id = '';
   error = '';
-
+  loggedIn = false;
 
   constructor(private winRef: WindowRefService, private _subscriptionService: SubscriptionService, private _route: Router) { }
 
@@ -23,7 +23,8 @@ export class SubscriptionComponent implements OnInit {
       data => {
         console.log(data);
         this.subscriptionID = data.subscriptionID;
-        this.loggedIn = data.loggedIn;
+        this.Id = sessionStorage.getItem('Id');
+        this.loggedIn = (this.Id === null || this.Id === '' || this.Id === undefined) ? false : true;
       },
       error => {
         console.log('Error');

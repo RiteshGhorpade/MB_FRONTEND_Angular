@@ -9,20 +9,20 @@
       molestiae.
     </p>
     <button
-      *ngIf="subscriptionID == '' && loggedIn == 'true'"
+      *ngIf="subscriptionID == '' && loggedIn"
       id="rzp-button1"
       (click)="payWithRazor()"
     >
       Subscribe
     </button>
     <button
-      *ngIf="subscriptionID != '' && loggedIn == 'true'"
+      *ngIf="subscriptionID != '' && loggedIn"
       id="rzp-button2"
       (click)="cancelWithRazor()"
     >
       Cancel Subscription
     </button>
-    <button *ngIf="loggedIn == 'false'" id="rzp-button3" (click)="login()">
+    <button *ngIf="!loggedIn" id="rzp-button3" (click)="login()">
       Login to Subscribe
     </button>
     <small class="text-danger">{{ error }}</small>

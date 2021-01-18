@@ -20,6 +20,8 @@ export class SigninComponent implements OnInit {
     console.log('response sent');
     this._service.SignIn(this.manager).subscribe(
       data => {
+        console.log(data);
+        sessionStorage.setItem('Id', data.Id);
         this._route.navigate(['/subscription']);
       },
       error => {
